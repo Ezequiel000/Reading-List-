@@ -1,5 +1,6 @@
-import { createContext, useState} from "react";
 import axios from 'axios';
+import { createContext, useState} from "react";
+
 const BooksContext = createContext();
 
 function Provider({children}){
@@ -37,18 +38,20 @@ function Provider({children}){
         });
         setBooks(updatedBooks);
     };
-    const valueToShare ={
+
+    const valueToShare = {
         books: books, 
         deleteBookById, 
         editBookById, 
         createBook, 
-        fetchBooks,
+        fetchBooks
     };
+    
     return (
-    <BooksContext.Provider value = {{valueToShare}}>
+    <BooksContext.Provider value = {valueToShare}>
         {children}
     </BooksContext.Provider>);
-}
+};
 
 export {Provider};
 
